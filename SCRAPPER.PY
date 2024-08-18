@@ -40,8 +40,8 @@ def get_url(index, page_num):
     return url
 
 # Define the range of alphabets and pages
-alphabets = ['W']  # Add more alphabets as needed
-num_pages = 3  # Define the number of pages to scrape
+alphabets = ['V','Z']  # Add more alphabets as needed
+num_pages = 8 # Define the number of pages to scrape
 
 # Process each alphabet
 for alphabet in alphabets:
@@ -588,3 +588,34 @@ for alphabet in alphabets:
 
 
     print(f"Completed scraping and checking for Alphabet {alphabet}")
+#alarm for work done 
+import pyttsx3
+
+# Initialize the text-to-speech engine
+engine = pyttsx3.init()
+
+# List available voices
+voices = engine.getProperty('voices')
+
+# Print available voices to choose from
+for voice in voices:
+    print(f"ID: {voice.id}, Name: {voice.name}, Lang: {voice.languages}")
+
+# Set properties for a clearer and dramatic effect
+engine.setProperty('rate', 150)  # Speed percent (can go over 100)
+engine.setProperty('volume', 1.0)  # Volume (0.0 to 1.0)
+
+# Select a voice (change 'english-us' to another ID from your list if needed)
+selected_voice_id = 'english-us'  # Use a suitable voice ID from your list
+for voice in voices:
+    if voice.id == selected_voice_id:
+        engine.setProperty('voice', voice.id)
+        break
+
+# Speak the text
+
+engine.say("VALENTINE FINISH OTILOR FINISH FINISH, ")
+
+# Wait for the speech to complete
+engine.runAndWait()
+
