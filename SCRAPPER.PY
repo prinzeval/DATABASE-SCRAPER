@@ -40,8 +40,8 @@ def get_url(index, page_num):
     return url
 
 # Define the range of alphabets and pages
-alphabets = ['V','Z']  # Add more alphabets as needed
-num_pages = 8 # Define the number of pages to scrape
+alphabets = ['A']  # Add more alphabets as needed
+num_pages = 2 # Define the number of pages to scrape
 
 # Process each alphabet
 for alphabet in alphabets:
@@ -614,7 +614,7 @@ for voice in voices:
 
 # Speak the text
 
-engine.say("VALENTINE FINISH OTILOR FINISH FINISH, ")
+engine.say("NAHIDA TELL VALENTINE THE CODE HAS FINISHED SUCCESSFULLY   PLEASE NAHIDA TELL VALENTINE THE CODE HAS FINISHED ")
 
 # Wait for the speech to complete
 engine.runAndWait()
