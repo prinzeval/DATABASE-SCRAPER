@@ -24,7 +24,7 @@ import os
 
 
 # Path to your ChromeDriver
-chrome_driver_path = '/home/valentine/Desktop/chromedriver-linux64/chromedriver'
+chrome_driver_path = r'C:\Users\valen\Desktop\chromedriver-win64\chromedriver'
 
 # Supabase URL and Key
 url = "https://gqsobrbengdkxgfwzfcd.supabase.co"
@@ -40,7 +40,7 @@ def get_url(index, page_num):
     return url
 
 # Define the range of alphabets and pages
-alphabets = ['A']  # Add more alphabets as needed
+alphabets = ['TOM AND JERRY']  # Add more alphabets as needed
 num_pages = 2 # Define the number of pages to scrape
 
 # Process each alphabet
@@ -102,6 +102,8 @@ for alphabet in alphabets:
         
         print(f"Total URLs not in the database for Page {page}: {len(my_list)}")
         print(my_list)
+
+
 
         #out.csv   production  
         
@@ -208,7 +210,8 @@ for alphabet in alphabets:
         #episode_data.csv
         
         # Path to your ChromeDriver
-        chrome_driver_path = '/home/valentine/Desktop/chromedriver-linux64/chromedriver'
+        chrome_driver_path = r'C:\Users\valen\Desktop\chromedriver-win64\chromedriver'
+
 
         def init_driver():
             options = Options()
@@ -341,7 +344,8 @@ for alphabet in alphabets:
         
 
         # Path to your ChromeDriver
-        chrome_driver_path = '/home/valentine/Desktop/chromedriver-linux64/chromedriver'
+        chrome_driver_path = r'C:\Users\valen\Desktop\chromedriver-win64\chromedriver'
+
 
         def init_driver():
             options = Options()
