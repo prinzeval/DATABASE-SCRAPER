@@ -1,0 +1,159 @@
+General Reset
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+    padding: 20px;
+}
+
+/* Main Container */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+#scrapeForm {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#scrapeForm label {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    display: block;
+    color: #2c3e50;
+}
+
+#scrapeForm input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+#scrapeForm button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#scrapeForm button:hover {
+    background-color: #2980b9;
+}
+
+/* Status Message */
+#status {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+/* PIN Prompt Styling */
+#pinPrompt {
+    text-align: center;
+    margin-top: 20px;
+    display: none;
+}
+
+#pinPrompt label {
+    font-size: 1.1em;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+#pinPrompt input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+#pinPrompt button {
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#pinPrompt button:hover {
+    background-color: #2980b9;
+}
+
+/* Results Styling */
+#results {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+#results h2 {
+    font-size: 1.8em;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+pre {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 1em;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #34495e;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    #scrapeForm {
+        width: 100%;
+        padding: 15px;
+    }
+
+    #scrapeForm input, #scrapeForm button {
+        font-size: 1em;
+    }
+
+    #pinPrompt input, #pinPrompt button {
+        font-size: 1em;
+    }
+
+    #results {
+        padding: 15px;
+    }
+}

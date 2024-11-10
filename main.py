@@ -68,16 +68,16 @@ def get_movie_urls_not_in_db(alphabet, num_pages=1):
 
 
 # Example usage
-if __name__ == "__main__":
-    alphabet = 'Avengers'  # You can change this to the desired search term or alphabet
-    num_pages = 1  # Number of pages to search
-    missing_urls = get_movie_urls_not_in_db(alphabet, num_pages)
-    # Output results and populate MISSING_URL
-    if missing_urls:
-        print("The following URLs are NOT in the database:", missing_urls)
-        with open("missing_url.json", "w") as f:
-            json.dump(missing_urls, f)
+# if __name__ == "__main__":
+#     alphabet = 'Avengers'  # You can change this to the desired search term or alphabet
+#     num_pages = 1  # Number of pages to search
+#     missing_urls = get_movie_urls_not_in_db(alphabet, num_pages)
+#     # Output results and populate MISSING_URL
+#     if missing_urls:
+#         print("The following URLs are NOT in the database:", missing_urls)
+#         with open("missing_url.json", "w") as f:
+#             json.dump(missing_urls, f)
 
                
-    else:
-        print("All URLs were found in the database.")
+#     else:
+#         print("All URLs were found in the database.")

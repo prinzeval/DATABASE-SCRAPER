@@ -13,23 +13,20 @@ def run_script(script_name):
         
         # Log and print output for monitoring
         logging.info(f"Completed {script_name} successfully.")
-        print(result.stdout)
+        return result.stdout
     except subprocess.CalledProcessError as e:
         logging.error(f"Error running {script_name}: {e.stderr}")
+        return f"Error running {script_name}: {e.stderr}"
 
 # Define the sequence in which to run scripts
 def main():
+    output = []
+    # output.append(run_script('main.py'))
+    output.append(run_script('OutCsv.py'))
+    output.append(run_script('episode.py'))
+    output.append(run_script('movieaction.py'))
+    output.append(run_script('combination.py'))
+    output.append(run_script('database.py'))
     
-    run_script('main.py')
-    run_script('OutCsv.py')  
-    run_script('episode.py')  
-    run_script('movieaction.py')  
-    run_script('combination.py')  
-    run_script('database.py')  
-
-
-
     logging.info("All scripts have completed.")
-
-if __name__ == "__main__":
-    main()
+    return output

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Scraper</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        /* Add custom styles for the admin PIN icon */
+        #adminIcon {
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 24px;
+            color: #007bff;
+            background-color: transparent;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+        }
+        #adminIcon:hover {
+            text-decoration: underline;
+        }
+
+        #adminPinPrompt {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Get Movies</h1>
+    <form id="scrapeForm">
+        <label for="alphabet">Movie Name:</label>
+        <input type="text" id="alphabet" name="alphabet" required><br><br>
+
+        <!-- Number of Pages is fixed to 1, so no need for input -->
+        <input type="hidden" id="num_pages" name="num_pages" value="1">
+
+        <button type="submit">FIND</button>
+    </form>
+
+    <div id="status"></div>
+
+    <div id="pinPrompt" style="display:none;">
+        <label for="pin">Enter PIN to view results:</label>
+        <input type="password" id="pin" name="pin" required><br><br>
+        <button onclick="checkPin()">Submit PIN</button>
+    </div>
+
+    <!-- Admin Icon -->
+    <button id="adminIcon" onclick="showAdminPinPrompt()">🔒 Admin Access</button>
+
+    <div id="adminPinPrompt">
+        <label for="adminPin">Enter Admin PIN:</label>
+        <input type="password" id="adminPin" required><br><br>
+        <button onclick="checkAdminPin()">Submit Admin PIN</button>
+    </div>
+
+    <div id="results" style="display:none;">
+        <h2>Results</h2>
+        <pre id="missingUrls"></pre>
+        <pre id="scriptOutputs"></pre>
+    </div>
+
+    <script>
+        // The PIN is hardcoded in the frontend (for demo purposes)
+        const correctPin = "1234"; // Set your PIN here
+        const adminPin = "admin22"; // Admin PIN for unlocking full control
+
+        document.getElementById("scrapeForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const alphabet = document.getElementById("alphabet").value;
+
+            // Show the status message that scraping is in progress
+            document.getElementById("status").textContent = "Retreiving in progress...";
+
+            // Run the scraping request with fixed num_pages value of 1
+            const response = await fetch("/scrape-movies", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    alphabet: alphabet,
+                    num_pages: 1 // Always send 1 as the number of pages
+                })
+            });
+
+            const data = await response.json();
+
+            // Show the status message that scraping is complete
+            document.getElementById("status").textContent = " Movie successfullly retrieved. Please enter the PIN to view the results.";
+
+            // Store the result data temporarily to show after PIN verification
+            window.scrapedData = data; // Store results globally
+
+            // Show the PIN prompt
+            document.getElementById("pinPrompt").style.display = "block";
+        });
+
+        function checkPin() {
+            const enteredPin = document.getElementById("pin").value;
+
+            if (enteredPin === correctPin) {
+                // Show the results if PIN is correct
+                document.getElementById("missingUrls").textContent = JSON.stringify(window.scrapedData.missing_urls, null, 2);
+                document.getElementById("scriptOutputs").textContent = JSON.stringify(window.scrapedData.script_outputs, null, 2);
+                document.getElementById("results").style.display = "block";
+                document.getElementById("pinPrompt").style.display = "none"; // Hide PIN prompt after correct entry
+            } else {
+                // Show error message if PIN is incorrect
+                alert("Incorrect PIN. You do not have access to the results.");
+            }
+        }
+
+        function showAdminPinPrompt() {
+            document.getElementById("adminPinPrompt").style.display = "block";
+        }
+
+        function checkAdminPin() {
+            const enteredAdminPin = document.getElementById("adminPin").value;
+
+            if (enteredAdminPin === adminPin) {
+                // Unlock full access to input the number of pages and see the results without restrictions
+                document.getElementById("num_pages").type = "number"; // Change hidden input to number input
+                document.getElementById("num_pages").min = "1"; // Ensure min value is 1
+                document.getElementById("num_pages").max = "100"; // You can adjust the max value as needed
+
+                alert("Admin access granted! You can now input any number of pages.");
+                document.getElementById("adminPinPrompt").style.display = "none";
+            } else {
+                alert("Incorrect Admin PIN. Access denied.");
+            }
+        }
+    </script>
+</body>
+</html>

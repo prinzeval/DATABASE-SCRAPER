@@ -1,2 +1,10 @@
 fastapi
 uvicorn
+supabase
+html5lib
+pandas
+bs4 
+requests
+selenium 
+pyttsx3
+Jinja2
