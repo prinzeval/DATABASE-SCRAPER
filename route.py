@@ -6,6 +6,7 @@ from controller import main as run_all_scripts
 from fastapi.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, JSONResponse
+import uvicorn  
 
 app = FastAPI()
 
@@ -36,5 +37,4 @@ async def scrape_movies(request: ScrapeRequest):
     }
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8050)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
