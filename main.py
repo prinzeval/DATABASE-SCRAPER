@@ -69,7 +69,7 @@ def get_movie_urls_not_in_db(alphabet, num_pages=1):
 
 # Example usage
 if __name__ == "__main__":
-    alphabet = 'Venom'  # You can change this to the desired search term or alphabet
+    alphabet = 'Avengers'  # You can change this to the desired search term or alphabet
     num_pages = 1  # Number of pages to search
     missing_urls = get_movie_urls_not_in_db(alphabet, num_pages)
     # Output results and populate MISSING_URL
