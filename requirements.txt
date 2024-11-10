@@ -3,9 +3,9 @@ uvicorn
 supabase
 html5lib
 pandas
-bs4 
+beautifulsoup4
 requests
-selenium 
+selenium
 pyttsx3
 Jinja2
-selenium webdriver-manager
+webdriver-manager
