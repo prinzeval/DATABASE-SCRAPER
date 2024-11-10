@@ -7,7 +7,7 @@ from fastapi.staticfiles import StaticFiles
 from starlette.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, JSONResponse
 import uvicorn  
-
+import os 
 app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
@@ -36,5 +36,9 @@ async def scrape_movies(request: ScrapeRequest):
         "script_outputs": script_outputs
     }
 
+
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Get the PORT from the Render environment variables
+    port = int(os.getenv("PORT", 8000))  # Fallback to 8000 if not set
+    
+    uvicorn.run(app, host="0.0.0.0", port=port)
