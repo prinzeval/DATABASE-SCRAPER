@@ -10,6 +10,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+
 import concurrent.futures
 import logging
 import traceback
@@ -19,7 +22,7 @@ import os
 import json
 
 
-chrome_driver_path = r'C:\Users\valen\Desktop\chromedriver-win64\chromedriver.exe'
+# chrome_driver_path = r'C:\Users\valen\Desktop\chromedriver-win64\chromedriver.exe'   ## we dont need becuae of render 
 
 with open('missing_url.json','r') as f:
     missing_urls = json.load(f)
@@ -41,7 +44,8 @@ def scrape_data(link):
              'profile.managed_default_content_settings.stylesheets': 2}
     chrome_options.add_experimental_option('prefs', prefs)
 
-    service = Service(executable_path=chrome_driver_path)
+    # service = Service(executable_path=chrome_driver_path)
+    service = ChromeService(executable_path=ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=chrome_options)
     data = []
 

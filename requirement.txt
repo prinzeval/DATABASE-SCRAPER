@@ -8,3 +8,4 @@ requests
 selenium 
 pyttsx3
 Jinja2
+selenium webdriver-manager
